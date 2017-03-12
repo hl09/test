@@ -5,10 +5,21 @@ import time
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11,GPIO.OUT)
 
-while True :
+
+
+def turnLedOn():
     GPIO.output(11,True)
     print('on')
-    time.sleep(0.1)
+
+def turnLedOff():
     GPIO.output(11,False)
     print('off')
-    time.sleep(0.1)
+
+def turnLedFlash():
+    while True:
+        GPIO.output(11, True)
+        print('on')
+        time.sleep(0.1)
+        GPIO.output(11, False)
+        print('off')
+        time.sleep(0.1)
