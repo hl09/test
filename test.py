@@ -10,8 +10,10 @@ pin_13 = 13
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-
-
+GPIO.setup(pin_5,GPIO.OUT)
+GPIO.setup(pin_7,GPIO.OUT)
+GPIO.setup(pin_11,GPIO.OUT)
+GPIO.setup(pin_13,GPIO.OUT)
 
 def turnLedOn():
     GPIO.output(11,True)
@@ -43,12 +45,19 @@ def setStep(w1,w2,w3,w4):
     GPIO.output(pin_11, w3)
     GPIO.output(pin_13, w4)
 
-def forward(delay):
-    setStep(1,0,0,0)
-    time.sleep(delay)
-    setStep(0, 1, 0, 0)
-    time.sleep(delay)
-    setStep(0,0,1,0)
-    time.sleep(delay)
-    setStep(0,0,0,1)
-    time.sleep(delay)
+def forward(delay,steps):
+    for i in range(0,steps):
+      setStep(1,0,0,0)
+      time.sleep(delay)
+      setStep(0, 1, 0, 0)
+      time.sleep(delay)
+      setStep(0,0,1,0)
+      time.sleep(delay)
+      setStep(0,0,0,1)
+      time.sleep(delay)
+
+
+
+motorInit()
+print('forward...')
+forward(0.008,2048)
