@@ -34,16 +34,16 @@ def turnLedFlash():
 
 
 def motorInit():
-    GPIO.setup(pin_5,GPIO.OUT)
-    GPIO.setup(pin_7, GPIO.OUT)
-    GPIO.setup(pin_11, GPIO.OUT)
-    GPIO.setup(pin_13, GPIO.OUT)
+    GPIO.setup(pin_4,GPIO.OUT)
+    GPIO.setup(pin_17, GPIO.OUT)
+    GPIO.setup(pin_23, GPIO.OUT)
+    GPIO.setup(pin_24, GPIO.OUT)
 
 def setStep(w1,w2,w3,w4):
-    GPIO.output(pin_5,w1)
-    GPIO.output(pin_7, w2)
-    GPIO.output(pin_11, w3)
-    GPIO.output(pin_13, w4)
+    GPIO.output(pin_4,w1)
+    GPIO.output(pin_17, w2)
+    GPIO.output(pin_23, w3)
+    GPIO.output(pin_24, w4)
 
 def forward(delay,steps):
     for i in range(0,steps):
