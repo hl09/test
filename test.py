@@ -58,6 +58,7 @@ def forward(delay,steps):
 
 
 
+
 motorInit()
 print('forward...')
-forward(0.008,2048)
+forward(0.01,4096)
