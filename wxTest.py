@@ -49,6 +49,7 @@ def text_reply(msg):
       itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
       engineOff()
 
+    #处理拍照指令，将拍照图片保存且发送给指令者
     if msg['Text'] == 'photo':
       itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
       photo()

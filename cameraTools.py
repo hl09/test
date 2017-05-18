@@ -2,11 +2,9 @@
 import cv2
 import datetime
 import time
-import os
-import os.path
-import sys
 
 
+#使用opencv启动摄像头拍照，按时间命名保持图片
 def capturePicture():
   cap = cv2.VideoCapture(0)
   ret,frame = cap.read()
