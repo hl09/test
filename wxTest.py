@@ -1,7 +1,9 @@
 #coding=utf8
 import itchat
 import test
+import cameraTools
 from itchat.content import *
+import sys
 
 
 def turnOn():
@@ -21,6 +23,9 @@ def engineStart():
 
 def engineOff():
     test.engineOff()
+
+def photo():
+    cameraTools.capturePicture()
 
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING])
 def text_reply(msg):
@@ -43,6 +48,14 @@ def text_reply(msg):
     if msg['Text'] == 'engine off':
       itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
       engineOff()
+
+    #处理拍照指令，将拍照图片保存且发送给指令者
+    if msg['Text'] == 'photo':
+      itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
+      photo()
+      itchat.send_image(sys.path[0]+'\aa.png',msg['FromUserName'])
+
+
 
 itchat.auto_login(True)
 itchat.run()
