@@ -78,23 +78,22 @@ def checkDistince():
 
 
 def engineStart():
-    GPIO.setup(7, GPIO.OUT)
-    GPIO.output(7, GPIO.HIGH)
+    GPIO.setup(3, GPIO.OUT)
+    GPIO.output(3, GPIO.HIGH)
     print('engine start.....')
 
 
 def engineOff():
-    GPIO.setup(7, GPIO.OUT)
-    GPIO.output(7, GPIO.LOW)
+    GPIO.setup(3, GPIO.OUT)
+    GPIO.output(3, GPIO.LOW)
     print('engine off.....')
 
 
 
 command = input('input your command:')
-if command == 'engine start':
-    for i in range(1,20):
+if command == 'start':
       engineStart()
-if command == 'engine off':
+if command == 'off':
     engineOff()
 
 
