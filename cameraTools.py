@@ -1,9 +1,10 @@
 #coding = utf-8
-import cv2
+import picamera
 import datetime
 import time
 
 
+'''
 #使用opencv启动摄像头拍照，按时间命名保持图片
 def capturePicture():
   cap = cv2.VideoCapture(0)
@@ -16,3 +17,9 @@ def capturePicture():
   cv2.imwrite(filename,frame)
   cap.release()
   cv2.destroyAllWindows()
+'''
+
+def getPicture():
+  camera = picamera.PiCamera()
+  camera.capture('a.jpg')
+  camera.close()

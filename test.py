@@ -90,6 +90,7 @@ def engineOff():
 
 
 
+'''
 command = input('input your command:')
 if command == 'start':
       engineStart()
@@ -98,7 +99,7 @@ if command == 'off':
 
 
 
-'''
+
 motorInit()
 print('forward...')
 forward(0.002,4096)
