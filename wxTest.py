@@ -4,7 +4,7 @@ import test
 import cameraTools
 from itchat.content import *
 import sys
-
+import time
 
 def turnOn():
     test.turnLedOn()
@@ -25,9 +25,10 @@ def engineOff():
     test.engineOff()
 
 def photo():
-    cameraTools.capturePicture()
+    cameraTools.getPicture()
 
-@itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING])
+@itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING,PICTURE])
+
 def text_reply(msg):
     if msg['Text'] == 'turn on':
       itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
@@ -53,7 +54,16 @@ def text_reply(msg):
     if msg['Text'] == 'photo':
       itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
       photo()
-      itchat.send_image(sys.path[0]+'\aa.png',msg['FromUserName'])
+      print(sys.path[0] + "/a.jpg")
+      itchat.send_image(sys.path[0] + "/a.jpg", msg['FromUserName'])
+
+    if msg['Text'] == 'water':
+      itchat.send('%s: %s' % (msg['Type'], '执行指令'+msg['Text']), msg['FromUserName'])
+      engineStart()
+      time.sleep(8)
+      photo()
+      itchat.send_image(sys.path[0] + "/a.jpg", msg['FromUserName'])
+      engineOff()
 
 
 
