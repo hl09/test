@@ -1,26 +1,25 @@
 #coding = utf-8
 
 import datetime
-import time
-import pygame
-import pygame.camera
-
+from time import sleep
+import picamera
 
 
 
 
 def getPicture():
-  pygame.init()
-  pygame.camera.init()
-  camera = pygame.camera.Camera("/dev/video0",(640,480))
-  camera.start()
-  imagetmp = camera.get_image()
-  pygame.image.save(imagetmp,"a.jpg")
-  print("get picture has been done")
-  camera.stop()
+  camera = picamera.PiCamera()
+  camera.capture('a.jpg')
+  camera.start_preview()
 
 
-
+def getVideo():
+    camera = picamera.PiCamera()
+    camera.start_preview()
+    camera.start_recording('video.h264')
+    sleep(6)
+    camera.stop_recording()
 
 getPicture()
 
+getVideo()
