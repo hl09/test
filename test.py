@@ -80,6 +80,7 @@ def checkDistince():
 def engineStart():
     GPIO.setup(3, GPIO.OUT)
     GPIO.output(3, GPIO.HIGH)
+    time.sleep(8)
     print('engine start.....')
 
 
@@ -89,33 +90,3 @@ def engineOff():
     print('engine off.....')
 
 
-
-'''
-command = input('input your command:')
-if command == 'start':
-      engineStart()
-if command == 'off':
-    engineOff()
-
-
-
-
-motorInit()
-print('forward...')
-forward(0.002,4096)
-
-
-
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(pin_11,GPIO.OUT,initial = GPIO.LOW)
-GPIO.setup(pin_13,GPIO.IN)
-
-time.sleep(2)
-
-try:
-    while True:
-        print('Distince: %0.2f m'%checkDistince())
-        time.sleep(1)
-except KeyboardInterrupt:
-    GPIO.cleanup()
-'''

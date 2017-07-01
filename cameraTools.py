@@ -24,10 +24,9 @@ def getVideo():
 
     camera.start_preview()
     camera.start_recording('myvideo.h264')
-    camera.wait_recording(6)
+    camera.wait_recording(8)
     camera.stop_recording()
     camera.close()
 
     os.system("MP4Box -add myvideo.h264 myvideo.mp4")
-
 
