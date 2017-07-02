@@ -5,24 +5,8 @@ import test
 import cameraTools
 from itchat.content import *
 import sys
-import os
-from time import sleep, ctime
+
 import threading
-
-
-def turnOn():
-    test.turnLedOn()
-    print('turn on..')
-
-
-def turnOff():
-    test.turnLedOff()
-    print('turn off..')
-
-
-def turnFlash():
-    test.turnLedFlash()
-    print('turn flash..')
 
 
 def engineStart():
@@ -41,32 +25,8 @@ def video():
     cameraTools.getVideo()
 
 
-def test123():
-    for i in range(1):
-        print ('123: ' + str(ctime()))
-        sleep(1)
-
-
-def test456():
-    for i in range(1):
-        print ('456: ' + str(ctime()))
-        sleep(1)
-
-
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING, PICTURE])
 def text_reply(msg):
-    if msg['Text'] == 'turn on':
-        itchat.send('%s: %s' % (msg['Type'], msg['Text'] + ' processed'), msg['FromUserName'])
-        turnOn()
-
-    if msg['Text'] == 'turn off':
-        itchat.send('%s: %s' % (msg['Type'], msg['Text'] + ' processed'), msg['FromUserName'])
-        turnOff()
-
-    if msg['Text'] == 'turn flash':
-        itchat.send('%s: %s' % (msg['Type'], msg['Text'] + ' processed'), msg['FromUserName'])
-        turnFlash()
-
     if msg['Text'] == 'engine start':
         itchat.send('%s: %s' % (msg['Type'], msg['Text'] + ' processed'), msg['FromUserName'])
         engineStart()
@@ -111,7 +71,7 @@ def text_reply(msg):
 
     if msg['Text'] == 'quit':
         itchat.send('%s: %s' % (msg['Type'], msg['Text'] + ' processed'), msg['FromUserName'])
-        os._exit()
+        sys.exit()
 
     if msg['Text'] == 'commands':
         itchat.send_file(sys.path[0] + "/readme.txt", msg['FromUserName'])
@@ -120,5 +80,5 @@ def text_reply(msg):
 if __name__ == '__main__':
     engineOff()
 
-    itchat.auto_login(True)
+    itchat.auto_login(enableCmdQR=2, hotReload=True)
     itchat.run()
